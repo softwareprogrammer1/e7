@@ -2626,7 +2626,6 @@ a:focus {
 
 /* Improved Top Bar Gradient */
 .top-bar {
-    background: linear-gradient(135deg, #FFD700 0%, #FFC000 30%, #DAA520 70%, #B8860B 100%) !important;
     position: relative;
 }
 
