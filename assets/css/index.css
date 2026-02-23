@@ -416,50 +416,67 @@ p {
     transition: all 0.3s ease;
 }
 
+/* Navigation Container - Mobile First */
 .nav-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+/* Base: Mobile Navigation (Hidden Off-screen) */
 .nav-links {
     display: flex;
-    gap: 48px;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--bg-white);
+    padding: 100px 40px;
+    gap: 32px;
+    z-index: 5000;
+    transform: translateX(100%);
+    transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.nav-links.mobile-active {
+    transform: translateX(0);
 }
 
 .nav-links a {
     color: var(--text-steel);
     text-decoration: none;
-    font-weight: 500;
-    font-size: 1rem;
+    font-weight: 700;
+    font-size: 1.5rem;
     transition: color 0.3s ease;
-    letter-spacing: -0.01em;
 }
 
-.nav-links a:hover,
 .nav-links a.active {
     color: var(--accent-blue);
 }
 
+/* Base: Mobile Toggle (Visible by default) */
 .mobile-toggle {
-    display: none;
+    display: flex;
     font-size: 1.5rem;
-    color: var(--accent-blue) !important;
+    color: var(--accent-blue);
     cursor: pointer;
-    z-index: 2000;
+    z-index: 6000;
     width: 48px;
     height: 48px;
-    background: var(--bg-white) !important;
+    background: var(--bg-white);
     border-radius: 50%;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
-.mobile-toggle i {
-    display: inline-block !important;
-    visibility: visible !important;
+/* Base: Desktop Actions (Hidden by default) */
+.nav-actions {
+    display: none;
 }
 
 /* ==========================================================================
@@ -884,6 +901,55 @@ textarea.form-control {
 /* ==========================================================================
    RESPONSIVE OVERRIDES (MOBILE FIXES)
    ========================================================================== */
+
+/* ==========================================================================
+   DESKTOP OVERRIDES (Layering Desktop layout on top)
+   ========================================================================== */
+
+@media (min-width: 992px) {
+    .nav-bar {
+        padding: 18px 0;
+        border-top: none !important;
+    }
+
+    .mobile-toggle {
+        display: none !important;
+    }
+
+    .nav-links {
+        position: static;
+        height: auto;
+        width: auto;
+        background: transparent;
+        flex-direction: row;
+        padding: 0;
+        gap: 48px;
+        transform: none;
+        box-shadow: none;
+        z-index: 1001;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .nav-actions {
+        display: flex;
+    }
+
+    .mobile-cta {
+        display: none !important;
+    }
+}
+
+/* Global Utility Force Visibility */
+.utility-btns {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 99999 !important;
+}
 
 @media (max-width: 991px) {
     .nav-bar {
