@@ -861,6 +861,27 @@ textarea.form-control {
 }
 
 /* ==========================================================================
+   FONT AWESOME RESILIENCE
+   ========================================================================== */
+.fa,
+.fas,
+.fab,
+.far {
+    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free" !important;
+    font-weight: 900;
+    display: inline-block !important;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    line-height: 1;
+}
+
+.fab {
+    font-family: "Font Awesome 6 Brands", "Font Awesome 5 Brands" !important;
+    font-weight: 400;
+}
+
+/* ==========================================================================
    RESPONSIVE OVERRIDES (MOBILE FIXES)
    ========================================================================== */
 
@@ -916,12 +937,12 @@ textarea.form-control {
 
     .mobile-toggle {
         display: flex !important;
+        visibility: visible !important;
     }
 
     .nav-links {
         position: fixed;
         top: 67px;
-        /* Adjusted for smaller nav-bar */
         left: 0;
         width: 100%;
         background: var(--bg-white);
@@ -951,7 +972,6 @@ textarea.form-control {
 
     .hero-title {
         font-size: 2.75rem;
-        /* Forced smaller size for mobile */
         margin-bottom: 24px;
     }
 
